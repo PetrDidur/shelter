@@ -1,0 +1,25 @@
+<div class="card mb-3 text" style="max-width: 300px;">
+  <div class="row no-gutters">
+    {% if object.photo %}
+    <div class="col-md-4">
+      <img src="{{ object.photo.url }}" class="card-img" alt="{{ object.name|title}}">
+    </div>
+    {% endif %}
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{ object.name|title}}</h5>
+        <p class="card-text"><strong>Порода:</strong> {{ object.category }}</p>
+        {% if object.birth_date %}
+        <p class="card-text"><strong>Дата рождения:</strong> {{ object.birth_date }}</p>
+        {% endif %}
+      </div>
+    <div class="card-footer">
+        <div class="btn-group">
+                  <a href="{% url 'dogs:dog_detail'  object.pk%}" type="button" class="btn btn-sm btn-outline-secondary">View</a>
+                  <a href="{% url 'dogs:dog_update' object.pk %}" type="button" class="btn btn-sm btn-outline-secondary">Edit</a>
+                  <a href="{% url 'dogs:dog_delete' object.pk %}" type="button" class="btn btn-sm btn-outline-secondary">Delete</a>
+        </div>
+    </div>
+    </div>
+  </div>
+</div>
